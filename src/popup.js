@@ -6,6 +6,7 @@ chrome.storage.sync.get("color", ({ color }) => {
     changeColor.style.backgroundColor = color;
 });
 
+
 // When the button is clicked, inject setPageBackgroundColor into current page
 changeColor.addEventListener("click", async () => {
     let [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
@@ -40,7 +41,7 @@ function reddenPage() {
 
     function code(result) { // After executing 'code' (callback)
         //이 문서에서 body 태그 아래에 있는 모든 텍스트를 가져온다
-        var bodyText = result;
+        let bodyText = result;
 
         bodyText.replaceAll("\n", "<br/><br/><br/>")
 
@@ -50,4 +51,6 @@ function reddenPage() {
 
     code(text);
 }
+
+
 

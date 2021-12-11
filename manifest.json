@@ -4,7 +4,6 @@
   "description": "make auto paragraph",
   "version": "1.0.0",
   "manifest_version": 3,
-
   "background": {
     "service_worker": "/src/background.js"
   },
@@ -16,6 +15,14 @@
     },
     "default_popup": "/src/popup.html"
   },
+  "content_scripts": [
+    {
+      "matches": ["*://*/*"],
+      "run_at": "document_idle",
+      "all_frames": true,
+      "js": ["/src/content-script.js"]
+    }
+  ],
   "permissions": [
     "activeTab",
     "scripting",
@@ -31,12 +38,5 @@
   "host_permissions": [
     "https://stackoverflow.com/*",
     "*://*/*"
-  ],
-  "content_scripts": [
-    {
-      "matches": ["*://*/*"],
-      "run_at": "document_idle",
-      "js": ["/src/content-script.js"]
-    }
   ]
 }
